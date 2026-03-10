@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Swiper？Swiper！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 引入本地老ccs失败这里借用ai的链接替代更进2.0 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+
+<style>
+    /* 轮播容器 */
+    .swiper {
+        width: 100%;    /* vscode自带优化时说，宽度占满屏幕，使用 inline-size 替换 width 有无必要最后整体调试，还有好几种调节但是不管可运行目前*/
+        height: 200px;  
+        border: 1px solid #eee; /* 边框方便看范围 */
+        margin-top: 20px;
+    }
+    /* 轮播项 */
+    .swiper-slide {
+        text-align: center;
+        line-height: 200px;    /* 行高等于容器高度，居中 */
+        font-size: 24px;
+        color: #333;
+        background-color: #f5f5f5;
+    }
+    /* 每个轮播项不同背景色，区分更明显 */
+    .swiper-slide:nth-child(1) {background: #2d9bcf;}
+    .swiper-slide:nth-child(2) {background: #8f7094;}
+    .swiper-slide:nth-child(3) {background: #7b8a7b;}
+    /* 圆点内容更改调试中 */
+    .swiper-pagination {
+      bottom: 10px ;
+      left: 50% ;
+      transform: translateX(-50%) ;/* 左边缘贴到轮播容器的 50% 中线位置，超好用的水平居中从左边计算 */
+    }
+    .swiper-pagination-bullet {margin: 0 6px ; /* 左右间距6px，默认只有2px，太窄了 */}
+    
+    /*左右按钮位置优化中 */
+    .swiper-button-prev, .swiper-button-next {
+      top: 50%; /* 垂直居中 */
+      width: 40px; 
+      height: 40px; 
+    }
+    .swiper-button-prev {left: 10px;}
+    .swiper-button-next {right: 10px;}
+</style>
+</head>
+  <body>
+    <header>
+      <h1>Swipergogogo</h1>
+      <p>大框架ing</p><!-- 混一下记忆用 -->
+    </header>
+
+    <main>
+      <!-- Swiper切换部分 -->
+      <div class="swiper my-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide-1">欢迎使用 Swiper</div>
+          <div class="swiper-slide slide-2">触摸滑动ing</div>
+          <div class="swiper-slide slide-3">可以放图文</div>
+        </div>
+
+        <!-- 分页和导航 底下小圆圈交互排版 -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </main>
+
+    <script src="./swiper-bundle.min.js"></script>   <!-- 引入本地老JS（CDN） -->
+    <!-- 初始化ing -->
+    <script>
+      const mySwiper = new Swiper(".my-swiper", {
+        loop: true, // 循环播放
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,// 允许点击分页圆点切换
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",//  切换上一页，下面同理下一页
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>
